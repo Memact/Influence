@@ -128,6 +128,12 @@ npm run pitch
 
 If you omit `--input`, Influnet now automatically uses the newest `captanet-snapshot-*.json` file it finds in the workspace root above this repository.
 
+That includes Captanet's rolling autosave file:
+
+```text
+C:\Users\sujay\Downloads\memact_ai\captanet-snapshot-latest.json
+```
+
 Analyze any Captanet snapshot:
 
 ```powershell
@@ -175,18 +181,10 @@ node src/cli.mjs --input examples/sample-captanet-snapshot.json --format all
 
 ## Captanet To Terminal Flow
 
-1. Export a Captanet snapshot from a bridge-enabled host:
-
-```js
-await window.captanet.exportSnapshot({
-  limit: 3000,
-});
-```
-
-By default that file is saved to:
+1. Run Captanet and let it capture normally. Captanet now keeps a rolling snapshot refreshed automatically at:
 
 ```text
-C:\Users\sujay\Downloads\memact_ai\captanet-snapshot-<timestamp>-<id>.json
+C:\Users\sujay\Downloads\memact_ai\captanet-snapshot-latest.json
 ```
 
 2. Analyze the newest exported snapshot in the terminal:
@@ -199,6 +197,20 @@ npm run analyze -- --format report
 
 ```powershell
 npm run pitch
+```
+
+4. If you want a point-in-time archive snapshot from the browser as well, you can still export one manually:
+
+```js
+await window.captanet.exportSnapshot({
+  limit: 3000,
+});
+```
+
+That manual archive is saved as:
+
+```text
+C:\Users\sujay\Downloads\memact_ai\captanet-snapshot-<timestamp>-<id>.json
 ```
 
 That creates:
