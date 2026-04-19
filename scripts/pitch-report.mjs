@@ -16,8 +16,8 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const workspaceRoot = path.resolve(projectRoot, "..");
 const defaultOutputDir = path.join(workspaceRoot, "pitch-output");
-const DEFAULT_SNAPSHOT_BASENAME = "captanet-snapshot.json";
-const SNAPSHOT_FILENAME_PATTERN = /^captanet-snapshot(?:-[^.]+)?\.json$/i;
+const DEFAULT_SNAPSHOT_BASENAME = "capture-snapshot.json";
+const SNAPSHOT_FILENAME_PATTERN = /^capture-snapshot(?:-[^.]+)?\.json$/i;
 
 async function exists(targetPath) {
   try {
@@ -87,7 +87,7 @@ async function main() {
   const inputPath = options.input || (await findLatestSnapshot(workspaceRoot));
   if (!inputPath || !(await exists(inputPath))) {
     throw new Error(
-      `Capture snapshot not found. Pass --input <path> or export a captanet-snapshot-*.json file into ${workspaceRoot} first so Memact Influence has real data to analyze.`
+      `Capture snapshot not found. Pass --input <path> or export a capture-snapshot-*.json file into ${workspaceRoot} first so Memact Influence has real data to analyze.`
     );
   }
 

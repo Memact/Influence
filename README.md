@@ -98,7 +98,7 @@ npm run analyze -- --format report
 Analyze a specific snapshot:
 
 ```powershell
-npm run analyze -- --input <path-to-captanet-snapshot-*.json> --format report
+npm run analyze -- --input <path-to-capture-snapshot-*.json> --format report
 ```
 
 Generate pitch artifacts locally:

@@ -21,7 +21,7 @@ async function main() {
 
   const snapshot = JSON.parse(
     await readFile(
-      path.join(projectRoot, 'examples', 'sample-captanet-snapshot.json'),
+      path.join(projectRoot, 'examples', 'sample-capture-snapshot.json'),
       'utf8'
     )
   )

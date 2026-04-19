@@ -1403,7 +1403,7 @@ export function formatMarkdownPitchReport(analysis) {
   lines.push("# Memact Influence Pitch Report");
   lines.push("");
   lines.push(
-    `Generated from a Captanet snapshot with ${meta.activity_count || 0} normalized activities across ${timeline.days_spanned || 0} active days.`
+    `Generated from a Capture snapshot with ${meta.activity_count || 0} normalized activities across ${timeline.days_spanned || 0} active days.`
   );
   lines.push("");
 

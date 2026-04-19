@@ -16,17 +16,17 @@ import {
   formatTerminalReport,
 } from "./engine.mjs";
 
-const DEFAULT_SNAPSHOT_BASENAME = "captanet-snapshot.json";
-const SNAPSHOT_FILENAME_PATTERN = /^captanet-snapshot(?:-[^.]+)?\.json$/i;
+const DEFAULT_SNAPSHOT_BASENAME = "capture-snapshot.json";
+const SNAPSHOT_FILENAME_PATTERN = /^capture-snapshot(?:-[^.]+)?\.json$/i;
 
 function printUsage() {
   console.log(`Memact Influence CLI
 
 Usage:
-  node src/cli.mjs --input <path-to-captanet-snapshot-*.json> [--format json|report|insights|graph|dot|themes|trajectories|drift|formation|pitch|evidence|all] [--field key|mode|label] [--window-minutes 45] [--min-count 3] [--min-source-count 5] [--top 3]
+  node src/cli.mjs --input <path-to-capture-snapshot-*.json> [--format json|report|insights|graph|dot|themes|trajectories|drift|formation|pitch|evidence|all] [--field key|mode|label] [--window-minutes 45] [--min-count 3] [--min-source-count 5] [--top 3]
 
 Options:
-  --input           Path to a Captanet snapshot JSON file
+  --input           Path to a Capture snapshot JSON file
   --format          Output format: json, report, insights, graph, dot, themes, trajectories, drift, formation, pitch, evidence, or all (default: report)
   --field           Activity identity field: key, mode, or label (default: key)
   --window-minutes  Maximum transition gap in minutes (default: 45)
@@ -193,7 +193,7 @@ async function main() {
   if (!inputPath) {
     printUsage();
     throw new Error(
-      "No Captanet snapshot was found. Pass --input <path> or place an exported captanet-snapshot-*.json file in the workspace root."
+      "No Capture snapshot was found. Pass --input <path> or place an exported capture-snapshot-*.json file in the workspace root."
     );
   }
   const inputText = await fs.readFile(inputPath, "utf8");
