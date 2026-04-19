@@ -1392,7 +1392,7 @@ export function formatDotGraph(chains) {
     })
     .join("\n");
 
-  return `digraph Influnet {\n${edges}\n}`;
+  return `digraph MemactInfluence {\n${edges}\n}`;
 }
 
 export function formatMarkdownPitchReport(analysis) {
@@ -1400,7 +1400,7 @@ export function formatMarkdownPitchReport(analysis) {
   const meta = analysis?.meta || {};
   const timeline = meta.timeline || {};
 
-  lines.push("# Influnet Pitch Report");
+  lines.push("# Memact Influence Pitch Report");
   lines.push("");
   lines.push(
     `Generated from a Captanet snapshot with ${meta.activity_count || 0} normalized activities across ${timeline.days_spanned || 0} active days.`
@@ -1462,7 +1462,7 @@ export function formatTerminalReport(analysis) {
   const timeline = meta.timeline || {};
   const lines = [];
 
-  lines.push("Influnet Report");
+  lines.push("Memact Influence Report");
   if (timeline.started_at || timeline.ended_at) {
     lines.push(
       `Timeline: ${timeline.started_at || "unknown"} -> ${timeline.ended_at || "unknown"} | days=${timeline.days_spanned || 0} | activities=${meta.activity_count || 0}`

@@ -87,7 +87,7 @@ async function main() {
   const inputPath = options.input || (await findLatestSnapshot(workspaceRoot));
   if (!inputPath || !(await exists(inputPath))) {
     throw new Error(
-      `Captanet snapshot not found. Pass --input <path> or export a captanet-snapshot-*.json file into ${workspaceRoot} first so Influnet has real data to analyze.`
+      `Capture snapshot not found. Pass --input <path> or export a captanet-snapshot-*.json file into ${workspaceRoot} first so Memact Influence has real data to analyze.`
     );
   }
 
@@ -98,31 +98,31 @@ async function main() {
 
   const files = [
     {
-      name: "influnet-analysis.json",
+      name: "influence-analysis.json",
       content: `${JSON.stringify(analysis, null, 2)}\n`,
     },
     {
-      name: "influnet-report.txt",
+      name: "influence-report.txt",
       content: `${formatTerminalReport(analysis)}\n`,
     },
     {
-      name: "influnet-insights.txt",
+      name: "influence-insights.txt",
       content: `${formatReadableInsights(analysis.insights) || "No valid influence chains found."}\n`,
     },
     {
-      name: "influnet-evidence.txt",
+      name: "influence-evidence.txt",
       content: `${formatReadableEvidence(analysis.valid_chains) || "No evidence-backed chains found."}\n`,
     },
     {
-      name: "influnet-graph.txt",
+      name: "influence-graph.txt",
       content: `${formatReadableGraph(analysis.valid_chains) || "No valid influence chains found."}\n`,
     },
     {
-      name: "influnet-graph.dot",
+      name: "influence-graph.dot",
       content: `${formatDotGraph(analysis.valid_chains)}\n`,
     },
     {
-      name: "influnet-pitch.md",
+      name: "influence-pitch.md",
       content: `${formatMarkdownPitchReport(analysis)}\n`,
     },
   ];
@@ -133,13 +133,13 @@ async function main() {
     )
   );
 
-  console.log(`Influnet pitch artifacts written to ${options.outputDir}`);
+  console.log(`Memact Influence pitch artifacts written to ${options.outputDir}`);
   for (const file of files) {
     console.log(`- ${path.join(options.outputDir, file.name)}`);
   }
 }
 
 main().catch((error) => {
-  console.error(String(error?.message || error || "Could not build Influnet pitch artifacts."));
+  console.error(String(error?.message || error || "Could not build Memact Influence pitch artifacts."));
   process.exitCode = 1;
 });

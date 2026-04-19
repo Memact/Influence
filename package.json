@@ -1,8 +1,8 @@
 {
-  "name": "influnet",
+  "name": "memact-influence",
   "private": true,
   "version": "0.0.0",
-  "description": "Influnet deterministic influence engine for Captanet snapshots.",
+  "description": "Memact Influence engine for deterministic thought-shaping patterns.",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "main": "./src/engine.mjs",
@@ -14,20 +14,20 @@
     "influence",
     "transitions",
     "deterministic",
-    "captanet",
+    "capture",
     "memory",
     "analysis"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Memact/Influnet.git"
+    "url": "https://github.com/Memact/Influence.git"
   },
-  "homepage": "https://github.com/Memact/Influnet",
+  "homepage": "https://github.com/Memact/Influence",
   "engines": {
     "node": ">=20"
   },
   "bin": {
-    "influnet": "./src/cli.mjs"
+    "memact-influence": "./src/cli.mjs"
   },
   "scripts": {
     "check": "node ./scripts/check.mjs",

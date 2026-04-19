@@ -61,7 +61,7 @@ async function main() {
     throw new Error('Expected startup formation signal was not found.')
   }
 
-  console.log('Influnet checks passed.')
+  console.log('Memact Influence checks passed.')
 }
 
 main().catch((error) => {

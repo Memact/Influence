@@ -20,7 +20,7 @@ const DEFAULT_SNAPSHOT_BASENAME = "captanet-snapshot.json";
 const SNAPSHOT_FILENAME_PATTERN = /^captanet-snapshot(?:-[^.]+)?\.json$/i;
 
 function printUsage() {
-  console.log(`Influnet CLI
+  console.log(`Memact Influence CLI
 
 Usage:
   node src/cli.mjs --input <path-to-captanet-snapshot-*.json> [--format json|report|insights|graph|dot|themes|trajectories|drift|formation|pitch|evidence|all] [--field key|mode|label] [--window-minutes 45] [--min-count 3] [--min-source-count 5] [--top 3]
@@ -301,6 +301,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(String(error?.message || error || "Influnet failed."));
+  console.error(String(error?.message || error || "Memact Influence failed."));
   process.exitCode = 1;
 });
