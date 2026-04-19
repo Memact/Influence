@@ -10,6 +10,8 @@ It answers:
 
 Influence is different from Origin. Origin looks for a possible direct source. Influence looks for repeated exposure, transitions, themes, and source trails that may have shaped the surrounding mental context.
 
+Influence supports Memact's citation and answer engine by explaining repeated shaping patterns behind an answer. It should never replace source citations or claim causality.
+
 ## Pipeline Position
 
 ```text
@@ -36,6 +38,7 @@ The current v0 engine can still analyze Capture snapshots directly for transitio
 - consume Inference records and Schema signals
 - rank shaping patterns related to the thought
 - cite evidence behind each influence pattern
+- provide source-backed context for answers in Interface
 - avoid claiming that an influence created the thought
 
 ## Relationship To Other Engines
