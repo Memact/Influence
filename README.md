@@ -15,10 +15,10 @@ Influence supports Memact's citation and answer engine by explaining repeated sh
 ## Pipeline Position
 
 ```text
-Capture -> Inference -> Schema -> Interface / Query -> Influence / Origin
+Capture -> Inference -> Schema -> Memory -> Interface / Query -> Influence / Origin
 ```
 
-The current v0 engine can still analyze Capture snapshots directly for transition patterns. The redesigned direction is for Influence to consume Inference and Schema outputs at query time, while keeping compatibility with existing Capture snapshots during the migration.
+The current v0 engine can still analyze Capture snapshots directly for transition patterns. The redesigned direction is for Influence to consume Inference, Schema, and Memory outputs at query time, while keeping compatibility with existing Capture snapshots during the migration.
 
 ## What It Does Today
 
@@ -46,6 +46,7 @@ The current v0 engine can still analyze Capture snapshots directly for transitio
 - Capture answers: `What did the user encounter?`
 - Inference answers: `What was it about?`
 - Schema answers: `What repeated mental frame may be forming?`
+- Memory answers: `What should survive and be retrieved as RAG context?`
 - Influence answers: `What repeatedly shaped this thought's direction?`
 - Origin answers: `Did a specific source likely introduce the thought?`
 - Interface answers: `How does the user inspect the evidence?`
