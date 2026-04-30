@@ -2,73 +2,45 @@
 
 Version: `v0.0`
 
-Influence is the deterministic shaping-pattern engine in the Memact architecture.
+Influence finds repeated shaping patterns around a thought.
 
-It answers:
-
-`What repeatedly shaped the direction of this thought over time?`
-
-Influence is different from Origin. Origin looks for a possible direct source. Influence looks for repeated exposure, transitions, themes, and source trails that may have shaped the surrounding mental context.
-
-Influence supports Memact's citation and answer engine by explaining repeated shaping patterns behind an answer. It should never replace source citations or claim causality.
-
-## Pipeline Position
+It owns one job:
 
 ```text
-Capture -> Inference -> Schema -> Memory -> Interface / Query -> Influence / Origin
+detect what repeatedly moved attention, themes, or activity in a direction
 ```
 
-The current v0 engine can still analyze Capture snapshots directly for transition patterns. The redesigned direction is for Influence to consume Inference, Schema, and Memory outputs at query time, while keeping compatibility with existing Capture snapshots during the migration.
+Influence does not claim causality. It explains repeated patterns that may have shaped the context around a thought.
 
-## What It Does Today
+## What This Repo Owns
 
-- reads Capture snapshot exports
-- normalizes fragmented activity labels into canonical activity types
-- detects directional `A -> B` transitions
-- computes transition count, `P(B | A)`, `P(B)`, lift, and confidence
-- suppresses weak bidirectional noise
-- attributes recurring source domains and source pages to each chain
-- detects repeated trajectories such as `A -> B -> C`
-- highlights persistent themes and drift signals over time
-- emits JSON, reports, readable graph lines, DOT graphs, and neutral deterministic insights
+- Reads Capture snapshots today.
+- Can later read Memory/Schema evidence at query time.
+- Normalizes fragmented activity labels.
+- Detects directional transitions such as `A -> B`.
+- Computes count, `P(B | A)`, `P(B)`, lift, and confidence.
+- Filters bidirectional noise.
+- Reports source trails behind repeated patterns.
+- Emits JSON, readable reports, graph lines, and DOT output.
 
-## What It Should Do Next
+## Valid Chain Rules
 
-- accept a user thought query from Interface
-- consume Inference records and Schema signals
-- rank shaping patterns related to the thought
-- cite evidence behind each influence pattern
-- provide source-backed context for answers in Interface
-- avoid claiming that an influence created the thought
+A chain is kept only when it passes support and direction checks:
 
-## Relationship To Other Engines
+```text
+count(A -> B) >= 3
+count(A) >= 5
+P(B | A) > P(B)
+A -> B is stronger than B -> A
+```
 
-- Capture answers: `What did the user encounter?`
-- Inference answers: `What was it about?`
-- Schema answers: `What repeated mental frame may be forming?`
-- Memory answers: `What should survive and be retrieved as RAG context?`
-- Influence answers: `What repeatedly shaped this thought's direction?`
-- Origin answers: `Did a specific source likely introduce the thought?`
-- Interface answers: `How does the user inspect the evidence?`
-
-## High-Signal Rules
-
-The current transition engine keeps a chain only when it survives these checks:
-
-- `count(A -> B) >= 3`
-- `count(A) >= 5`
-- the transition falls within the configured time window
-- `P(B | A) > P(B)`
-- the edge is directionally stronger than its reverse
-- it remains in the top output set after confidence ranking
-
-Confidence is ranked as:
+Confidence:
 
 ```text
 count(A -> B) * (P(B | A) - P(B))
 ```
 
-## Terminal Quickstart
+## Run Locally
 
 Prerequisites:
 
@@ -81,72 +53,36 @@ Install:
 npm install
 ```
 
-Run validation:
+Validate:
 
 ```powershell
 npm run check
 ```
 
-Run the included sample:
+Run sample:
 
 ```powershell
 npm run sample
 ```
 
-Analyze the latest Capture snapshot from the workspace root:
+Analyze a Capture snapshot:
 
 ```powershell
-npm run analyze -- --format report
+npm run analyze -- --input path\to\capture-snapshot.json --format report
 ```
 
-Analyze a specific snapshot:
+All output formats:
 
 ```powershell
-npm run analyze -- --input <path-to-capture-snapshot-*.json> --format report
+npm run sample:all
 ```
 
-Generate pitch artifacts locally:
+## Contract
 
-```powershell
-npm run pitch
-```
-
-Pitch output is written outside the repo by default:
-
-```text
-..\pitch-output\
-```
-
-## Sample Output
-
-```text
-Influence Report
-Timeline: 2026-04-01T08:00:00.000Z -> 2026-04-06T10:28:00.000Z | days=6 | activities=17
-
-Strongest Chains
-1. [startup] -> [exam] (5) lift=2.8333 confidence=3.2353
-   After engaging with startup-related content, you tended to move toward exam-related content.
-```
-
-## Programmatic Use
-
-```js
-import {
-  analyzeInfluenceSnapshot,
-  formatReadableGraph,
-  formatReadableInsights,
-  formatDotGraph,
-  formatTerminalReport,
-} from "memact-influence";
-```
-
-## Design Rules
-
-- deterministic first
-- no AI-generated conclusions
-- no causal claims
-- every influence pattern must retain evidence
-- Influence and Origin must stay separate claim types
+- Influence is about repeated shaping, not first origin.
+- It should avoid weak bidirectional patterns.
+- It should cite source trails when available.
+- It should never say a source caused a thought.
 
 ## License
 
