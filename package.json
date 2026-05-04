@@ -1,9 +1,8 @@
 {
   "name": "memact-influence",
-  "private": true,
   "version": "0.0.0",
   "description": "Memact Influence engine for deterministic thought-shaping patterns.",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "type": "module",
   "main": "./src/engine.mjs",
   "exports": {

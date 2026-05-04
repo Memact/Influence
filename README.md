@@ -86,4 +86,4 @@ npm run sample:all
 
 ## License
 
-See `LICENSE`.
+MIT. See `LICENSE`.
